@@ -1,0 +1,1 @@
+import banner_electronics from "./banner/banner_electronics.webp";

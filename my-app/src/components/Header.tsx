@@ -7,7 +7,9 @@ import Cart from './Cart'
 import SignIn from './SignIn'
 import MobileMenu from './MobileMenu'
 
-const Header = () => {
+const Header = async() => {
+  const user = await fetch('https://api.escuelajs.co/api/v1/users')
+
   return (
     <header className="bg-white max-w-full py-5 border-b border-b-neutral-500">
       <Container className="flex items-center justify-between text-lightColor md:gap-0">
@@ -19,7 +21,10 @@ const Header = () => {
         <div className="w-auto md:w-1/3 flex items-center justify-end space-x-4">
           <SearchBar/>
           <Cart />
-          <SignIn />
+          <ClerkLoader>
+            <SignIn />
+          </ClerkLoader>
+          
         </div>
         
       </Container>

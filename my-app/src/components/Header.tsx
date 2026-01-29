@@ -11,7 +11,7 @@ const Header = async() => {
   const user = await fetch('https://api.escuelajs.co/api/v1/users')
 
   return (
-    <header className="bg-white max-w-full py-5 border-b border-b-neutral-500">
+    <header className="bg-white max-w-full py-5">
       <Container className="flex items-center justify-between text-lightColor md:gap-0">
         <div className="w-auto md:-1/3 flex items-center gap-2.5 justify-start md:gap-0">
           <MobileMenu />
@@ -21,10 +21,7 @@ const Header = async() => {
         <div className="w-auto md:w-1/3 flex items-center justify-end space-x-4">
           <SearchBar/>
           <Cart />
-          <ClerkLoader>
-            <SignIn />
-          </ClerkLoader>
-          
+          <SignIn />
         </div>
         
       </Container>

@@ -15,10 +15,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className='font-poppins antialiased'>
+      <body className="font-poppins antialiased">
+        <div className='flex flex-col min-h-screen'>
         <Header />
-        {children}
+        <main className="flex-1 bg-lightColor">
+        {children}  
+        </main>
         <Footer />
+        </div>
       </body>
     </html>
   );

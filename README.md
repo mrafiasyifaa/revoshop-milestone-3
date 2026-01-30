@@ -1,13 +1,11 @@
 # 🛍️ RevoShop - Modern E-Commerce Platform
 
-![RevoShop Banner](https://via.placeholder.com/1200x400/1e3a8a/ffffff?text=RevoShop+-+Your+Premium+Shopping+Destination)
-
 ## 📋 Overview
 
 RevoShop is a modern, full-featured e-commerce platform built with Next.js 15, showcasing best practices in server-side rendering (SSR), static site generation (SSG), and dynamic routing. This project demonstrates a production-ready online shopping experience with real-time product filtering, dynamic product pages, and a seamless shopping cart system.
 
-**Live Demo**: [\[Your Deployed URL Here\]](https://revoshop-mrafiasyifaa.vercel.app/)  
-**Repository**: [\[Your GitHub Repo URL Here\]](https://github.com/Revou-FSSE-Oct25/milestone-3-mrafiasyifaa)
+**Live Demo**: [Visit Live Site Here!](https://revoshop-mrafiasyifaa.vercel.app/)  
+**Repository**: [Source Code Here!  ](https://github.com/Revou-FSSE-Oct25/milestone-3-mrafiasyifaa)
 
 ---
 
@@ -66,25 +64,7 @@ RevoShop is a modern, full-featured e-commerce platform built with Next.js 15, s
 
 ## 📸 Screenshots
 
-### 1. Home Page - Product Grid
-![Product Grid](https://imgur.com/6w37XPm)
-*Responsive grid layout displaying products with images, prices, and categories*
-
-### 2. Product Detail Page (SSR)
-![Product Detail](https://imgur.com/XHCQ70i)
-*Dynamic product page with image gallery, pricing, and add to cart functionality*
-
-### 3. Category & Price Filtering
-![Filters](https://imgur.com/VPxUN40)
-*Real-time filtering system with category selection and price range options*
-
-### 4. Mobile Responsive Design
-![Mobile View](https://imgur.com/5p25Zo3)
-*Mobile-optimized navigation with hamburger menu and responsive layout*
-
-### 5. Promotional Banner
-![Promo Banner](https://imgur.com/JK1x4x2)
-*Eye-catching promotional banner with special offers*
+**Documentation**: [Here!](https://imgur.com/a/revoshop-personal-use-oJAq0p4)
 
 ---
 

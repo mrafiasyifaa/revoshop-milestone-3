@@ -35,7 +35,7 @@ const Footer = async () => {
         <SubTitle>Categories</SubTitle>
         <ul className="space-y-3 mt-4">{categories?.map((item: any)=>(
           <li key={item?.id} className="text-neutral-800 text-sm font-poppins">
-            <Link href={`/category/${item?.slug}`} className="hover:text-revoshop-accent-hover hoverEffect">
+            <Link href={`/shop?category=${item?.slug}`} className="hover:text-revoshop-accent-hover hoverEffect">
               {item?.name}
             </Link>
           </li>

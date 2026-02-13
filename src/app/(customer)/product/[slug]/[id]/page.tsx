@@ -9,7 +9,9 @@ const SingleProductPage = async ({params}:{params: Promise<{slug: string; id: st
     const {id} = await params;
 
     try{
-        const response = await fetch(`https://api.escuelajs.co/api/v1/products/${id}`)
+    const response = await fetch(`https://api.escuelajs.co/api/v1/products/${id}`, {
+    next: { revalidate: 300 }
+    })
         if(!response.ok){
             notFound();
     }

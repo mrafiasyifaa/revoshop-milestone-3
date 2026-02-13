@@ -3,28 +3,14 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { SubText, SubTitle } from './ui/text'
 import AddToCart from './AddToCart'
-
-interface Product {
-  id: number
-  title: string
-  slug: string
-  price: number
-  description: string
-  category: {
-    id: number
-    name: string
-    slug: string
-    image: string
-  }
-  images: string[]
-}
+import {Product} from '@/src/types/product'
 
 const ProductCard = ({ product }: { product: Product }) => {
   return (
     <div className="text-sm border border-revoshop-navy/20 rounded-md bg-white group flex flex-col h-full">
       <Link href={`/product/${product.slug}/${product.id}`} className="relative group overflow-hidden bg-neutral-100">
         {product?.images && product.images.length > 0 && (
-          <Image 
+          <img 
             src={product.images[0]} 
             alt={product.title || "Product Image"} 
             loading="lazy" 

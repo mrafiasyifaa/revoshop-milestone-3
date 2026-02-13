@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { Toaster } from "../components/ui/sonner";
 
 export const metadata: Metadata = {
   title: "RevoShop",
@@ -19,7 +20,12 @@ export default function RootLayout({
         <div className='flex flex-col min-h-screen'>
         <Header />
         <main className="flex-1 bg-lightColor">
-        {children}  
+        {children}
+        <Toaster position="bottom-right" toastOptions={{style:{
+          background: "#fff",
+          color: "#000",
+        },
+        }}/>  
         </main>
         <Footer />
         </div>

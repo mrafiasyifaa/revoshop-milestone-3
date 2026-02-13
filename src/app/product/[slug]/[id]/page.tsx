@@ -2,26 +2,23 @@ import React from 'react'
 import Container from '@/src/components/Container'
 import ImageView from '@/src/components/ImageView'
 import AddToCart from '@/src/components/AddToCart'
-
-interface Product {
-  id: number;
-  title: string;
-  slug: string;
-  price: number;
-  description: string;
-  images: string[];
-  category: {
-    id: number;
-    name: string;
-    slug: string;
-    image: string;
-  };
-}
+import { Product } from '@/src/types/product'
+import { notFound } from 'next/navigation'
 
 const SingleProductPage = async ({params}:{params: Promise<{slug: string; id: string}>}) => {
     const {id} = await params;
-    const response = await fetch(`https://api.escuelajs.co/api/v1/products/${id}`)
+
+    try{
+        const response = await fetch(`https://api.escuelajs.co/api/v1/products/${id}`)
+        if(!response.ok){
+            notFound();
+    }
+    
     const product: Product = await response.json();
+        
+        if(!product|| !product.id){
+            notFound();
+        }
 
   return (
     <Container className="flex flex-col md:flex-row gap-10 py-10">
@@ -44,6 +41,9 @@ const SingleProductPage = async ({params}:{params: Promise<{slug: string; id: st
         </div>
     </Container>
   )
+    }catch(error){
+        console.error("Error fetching product:", error);
+        notFound();
+        }
 }
-
 export default SingleProductPage

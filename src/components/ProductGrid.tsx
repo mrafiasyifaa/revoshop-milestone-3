@@ -5,21 +5,7 @@ import NoProduct from './NoProduct'
 import CategoryList from './CategoryList'
 import ProductCard from './ProductCard'
 import { Loader } from 'lucide-react'
-
-interface Product {
-    id: number
-    title: string
-    slug: string
-    price: number
-    description: string
-    images: string[]
-    category: {
-        id: number
-        name: string
-        slug: string
-        image: string
-    }
-}
+import { Product } from '@/src/types/product'
 
 const ProductGrid = () => {
     const [products, setProducts] = useState<Product[]>([])

@@ -2,15 +2,7 @@ import React from 'react'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { Label } from '@/components/ui/label'
 import { Title } from '@/components/ui/text'
-
-interface Category {
-  id: number;
-  name: string;
-  slug: string;
-  image: string;
-  creationAt: string;
-  updatedAt: string;
-}
+import { Category } from '@/src/types/product'
 
 interface Props{
     categories: Category[];

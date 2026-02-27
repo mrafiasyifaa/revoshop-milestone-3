@@ -1,7 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { Product } from '@/src/types/product';
-import { cookies } from 'next/headers';
 
 export interface CartItem {
   product: Product;

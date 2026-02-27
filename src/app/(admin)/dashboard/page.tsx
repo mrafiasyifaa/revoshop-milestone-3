@@ -63,7 +63,7 @@ const DashboardPage = () => {
       console.error("Error fetching categories:", error);
     }
   };
-
+  
   useEffect(() => {
     fetchProducts();
     fetchCategories();

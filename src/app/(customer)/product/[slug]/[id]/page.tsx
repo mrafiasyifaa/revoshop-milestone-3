@@ -4,10 +4,6 @@ import ImageView from '@/src/components/ImageView'
 import AddToCart from '@/src/components/AddToCart'
 import { Product } from '@/src/types/product'
 import { notFound } from 'next/navigation'
-import { Suspense, lazy } from 'react'
-
-const ImageView = lazy(() => import('@/components/ImageView'));
-const AddToCart = lazy(() => import('@/components/AddToCart'));
 
 const SingleProductPage = async ({params}:{params: Promise<{slug: string; id: string}>}) => {
     const {id} = await params;

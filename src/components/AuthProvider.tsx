@@ -8,7 +8,7 @@ export default function AuthProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const { setUser, user, logout } = useStore();
+  const { setUser, user } = useStore();
 
   useEffect(() => {
     const sessionUser = getSessionFromCookie();
@@ -16,10 +16,6 @@ export default function AuthProvider({
     if (sessionUser) {
       if (!user || user.id !== sessionUser.id) {
         setUser(sessionUser);
-      }
-    } else {
-      if (user) {
-        logout();
       }
     }
   }, []);

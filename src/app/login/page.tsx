@@ -27,45 +27,23 @@ function LoginForm() {
     setLoading(true);
 
     try {
-      const loginResponse = await fetch("https://api.escuelajs.co/api/v1/auth/login", {
+      const response = await fetch("/api/auth/login", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email,
-          password,
-        }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
       });
 
-      if (!loginResponse.ok) {
-        throw new Error("Invalid email or password");
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || "Login failed");
       }
 
-      const { access_token } = await loginResponse.json();
+      const { user } = await response.json();
 
-      const profileResponse = await fetch("https://api.escuelajs.co/api/v1/auth/profile", {
-        headers: {
-          Authorization: `Bearer ${access_token}`,
-        },
-      });
-
-      if (!profileResponse.ok) {
-        throw new Error("Failed to fetch user profile");
-      }
-
-      const userData = await profileResponse.json();
-
-      setUser({
-        id: userData.id,
-        email: userData.email,
-        name: userData.name,
-        role: userData.role,
-        avatar: userData.avatar,
-      });
+      setUser(user);
 
       toast.success("Login successful!", {
-        description: `Welcome back, ${userData.name}!`,
+        description: `Welcome back, ${user.name}!`,
       });
 
       const redirectUrl = searchParams.get("redirect");
@@ -174,7 +152,13 @@ function LoginForm() {
 
 export default function LoginPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-lightColor flex items-center justify-center">Loading...</div>}>
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-lightColor flex items-center justify-center">
+          Loading...
+        </div>
+      }
+    >
       <LoginForm />
     </Suspense>
   );

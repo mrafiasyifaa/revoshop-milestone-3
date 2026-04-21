@@ -13,6 +13,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
               background: "#ffffff",
               color: "#000000",
               border: "1px solid #e5e7eb",
+              width: "360px",
             },
           }}
         />

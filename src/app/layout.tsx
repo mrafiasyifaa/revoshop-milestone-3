@@ -1,5 +1,5 @@
 import "./globals.css";
-import { Toaster } from "react-hot-toast";
+import { Toaster } from "sonner";
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en">

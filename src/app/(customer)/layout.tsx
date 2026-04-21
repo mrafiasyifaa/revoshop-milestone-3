@@ -17,20 +17,9 @@ export default function RootLayout({
 }>) {
   return (
     <AuthProvider>
-      <div className='flex flex-col min-h-screen'>
+      <div className="flex flex-col min-h-screen">
         <Header />
-        <main className="flex-1 bg-lightColor">
-          {children}
-          <Toaster 
-            position="bottom-right" 
-            toastOptions={{
-              style: {
-                background: "#fff",
-                color: "#000",
-              },
-            }}
-          />  
-        </main>
+        <main className="flex-1 bg-lightColor">{children}</main>
         <Footer />
       </div>
     </AuthProvider>

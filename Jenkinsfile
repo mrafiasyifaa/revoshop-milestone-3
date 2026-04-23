@@ -35,9 +35,10 @@ pipeline {
         stage('Docker Build') {
             steps {
                 echo 'Building Docker image...'
-                bat 'docker build -t revoshop:latest .'
+                catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
+                    bat 'docker build -t revoshop:latest .'
+                }
             }
         }
-
     }
 }

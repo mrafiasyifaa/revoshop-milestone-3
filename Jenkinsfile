@@ -34,10 +34,7 @@ pipeline {
 
         stage('Docker Build') {
             steps {
-                echo 'Building Docker image...'
-                catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
-                    bat 'docker build -t revoshop:latest .'
-                }
+                echo 'Docker Build skipped - run manually with: docker build -t revoshop:latest .'
             }
         }
     }

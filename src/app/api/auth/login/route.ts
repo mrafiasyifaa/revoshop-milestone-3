@@ -120,7 +120,15 @@ export async function POST(request: NextRequest){
 
         loginCounter.inc({ status: "success" });
 
-        return NextResponse.json({success: true, user, access_token})
+        const response = NextResponse.json({ success: true, user });
+        response.cookies.set("auth_session", JSON.stringify(user), {
+          httpOnly: true,
+          secure: process.env.NODE_ENV === "production",
+          sameSite: "lax",
+          maxAge: 60 * 60 * 24,
+          path: "/",
+        });
+        return response;
 
     } catch (error){
         console.log(JSON.stringify({

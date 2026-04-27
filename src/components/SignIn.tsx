@@ -9,8 +9,9 @@ function SignIn() {
   const { user, logout } = useStore();
   const router = useRouter();
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
     logout();
+    await fetch("/api/auth/logout", { method: "POST" });
     window.location.href = "/";
   };
 

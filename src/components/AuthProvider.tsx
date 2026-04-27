@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import useStore, { getSessionFromCookie } from "@/store";
+import useStore from "@/store";
 
 export default function AuthProvider({
   children,
@@ -11,13 +11,14 @@ export default function AuthProvider({
   const { setUser, user } = useStore();
 
   useEffect(() => {
-    const sessionUser = getSessionFromCookie();
-    
-    if (sessionUser) {
-      if (!user || user.id !== sessionUser.id) {
-        setUser(sessionUser);
-      }
-    }
+    fetch("/api/auth/me")
+      .then((res) => res.json())
+      .then(({ user: sessionUser }) => {
+        if (sessionUser && (!user || user.id !== sessionUser.id)) {
+          setUser(sessionUser);
+        }
+      })
+      .catch(() => {});
   }, []);
 
   return <>{children}</>;

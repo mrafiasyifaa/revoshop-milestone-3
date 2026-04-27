@@ -34,42 +34,20 @@ const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
     setLoading(true);
 
     try {
-      const loginResponse = await fetch("https://api.escuelajs.co/api/v1/auth/login", {
+      const loginResponse = await fetch("/api/auth/login", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email,
-          password,
-        }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
       });
 
       if (!loginResponse.ok) {
-        throw new Error("Invalid email or password");
+        const data = await loginResponse.json();
+        throw new Error(data.error || "Invalid email or password");
       }
 
-      const { access_token } = await loginResponse.json();
+      const { user: userData } = await loginResponse.json();
 
-      const profileResponse = await fetch("https://api.escuelajs.co/api/v1/auth/profile", {
-        headers: {
-          Authorization: `Bearer ${access_token}`,
-        },
-      });
-
-      if (!profileResponse.ok) {
-        throw new Error("Failed to fetch user profile");
-      }
-
-      const userData = await profileResponse.json();
-
-      setUser({
-        id: userData.id,
-        email: userData.email,
-        name: userData.name,
-        role: userData.role,
-        avatar: userData.avatar,
-      });
+      setUser(userData);
 
       setEmail("");
       setPassword("");

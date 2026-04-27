@@ -121,12 +121,7 @@ const useStore = create<CartState>()(
       getGroupedItems: () => get().items,
       
       setUser: (user) => {
-        const expirationDate = new Date();
-        expirationDate.setDate(expirationDate.getDate() + 1);
-        
         if (typeof window !== 'undefined') {
-          document.cookie = `auth_session=${JSON.stringify(user)}; expires=${expirationDate.toUTCString()}; path=/; SameSite=Lax`;
-          
           const userCart = getCartFromCookie(user.id);
           set({ user, items: userCart });
         } else {
@@ -137,14 +132,10 @@ const useStore = create<CartState>()(
       logout: () => {
         if (typeof window !== 'undefined') {
           const currentUser = get().user;
-          
           if (currentUser) {
             saveCartToCookie(currentUser.id, get().items);
           }
-          
-          document.cookie = 'auth_session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
         }
-        
         set({ user: null, items: [] });
       },
     }),
@@ -185,23 +176,5 @@ function getCartFromCookie(userId: number): CartItem[] {
     return [];
   }
 }
-
-export const getSessionFromCookie = (): User | null => {
-  if (typeof window === 'undefined') return null;
-  
-  const cookies = document.cookie.split('; ');
-  const authCookie = cookies.find(cookie => cookie.startsWith('auth_session='));
-  
-  if (!authCookie) return null;
-  
-  try {
-    const cookieValue = authCookie.split('=')[1];
-    const user = JSON.parse(decodeURIComponent(cookieValue));
-    return user;
-  } catch (error) {
-    console.error('Error parsing auth cookie:', error);
-    return null;
-  }
-};
 
 export default useStore;
